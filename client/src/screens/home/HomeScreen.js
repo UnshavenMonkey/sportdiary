@@ -3,7 +3,7 @@ import { ImageBackground, View, Text, StyleSheet } from 'react-native';
 
 export default function HomeScreen() {
     return (
-        <ImageBackground source={require('../public/images/background-login.jpg')} style={styles.image}>
+        <ImageBackground source={require('../../../public/images/background-login.jpg')} style={styles.image}>
             <View style={styles.card}>
                 <Text style={styles.heading}>Home</Text>
             </View>

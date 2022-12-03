@@ -9,7 +9,7 @@ export default function InputAgeScreen() {
     // eslint-disable-next-line prettier/prettier
     const numbers = Array(100).fill(1).map((v, i) => i + 1);
     return (
-        <ImageBackground source={require('../public/images/background-login.jpg')} style={styles.image}>
+        <ImageBackground source={require('../../../public/images/background-login.jpg')} style={styles.image}>
             <View style={styles.card}>
                 <Picker selectedValue={selectedAge} onValueChange={(itemValue, itemIndex) => setSelectedAge(itemValue)}>
                     {numbers.map(i => (
@@ -39,14 +39,6 @@ const styles = StyleSheet.create({
         maxHeight: 380,
         paddingBottom: '30%'
     },
-    heading: {
-        fontSize: 30,
-        fontWeight: 'bold',
-        marginLeft: '10%',
-        marginTop: '5%',
-        marginBottom: '30%',
-        color: 'black'
-    },
     button: {
         width: '80%',
         backgroundColor: 'black',
@@ -54,6 +46,7 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         justifyContent: 'center',
         alignItems: 'center',
+        alignSelf: 'center',
         marginVertical: 5
     },
     buttonText: {

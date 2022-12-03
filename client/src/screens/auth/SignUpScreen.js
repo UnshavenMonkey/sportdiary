@@ -6,7 +6,7 @@ const API_URL = Platform.OS === 'ios' ? 'http://localhost:5001' : 'http://10.0.2
 export default function SignUpScreen(props) {
     const { navigation } = props;
     return (
-        <ImageBackground source={require('../public/images/background-login.jpg')} style={styles.image}>
+        <ImageBackground source={require('../../../public/images/background-login.jpg')} style={styles.image}>
             <View style={styles.card}>
                 <Text style={styles.heading}>Signup</Text>
                 <View style={styles.form}>

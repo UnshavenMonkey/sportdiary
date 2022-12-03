@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import AuthNavigator from './navigations/AuthNavigator';
+import AuthNavigator from './src/navigations/AuthNavigator';
 
 export default function App() {
     // const isSignedIn = false;
