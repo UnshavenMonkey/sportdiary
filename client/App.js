@@ -1,24 +1,23 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { AuthScreen } from './screens';
-import {NavigationContainer} from "@react-navigation/native";
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import AuthNavigator from './navigations/AuthNavigator';
 
 export default function App() {
-  return (
-      <NavigationContainer>
-          <View style={styles.container}>
-              <AuthScreen />
-          </View>
-      </NavigationContainer>
-  );
-};
+    // const isSignedIn = false;
+    return (
+        <NavigationContainer>
+            <AuthNavigator />
+        </NavigationContainer>
+    );
+}
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
 });
