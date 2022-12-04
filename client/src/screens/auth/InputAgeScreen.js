@@ -3,20 +3,21 @@ import { ImageBackground, View, Text, StyleSheet, Pressable } from 'react-native
 import { Picker } from '@react-native-picker/picker';
 import { useNavigation } from '@react-navigation/native';
 
-export default function InputAgeScreen() {
+export default function InputAgeScreen({ route }) {
     const [selectedAge, setSelectedAge] = useState();
     const navigation = useNavigation();
     // eslint-disable-next-line prettier/prettier
     const numbers = Array(100).fill(1).map((v, i) => i + 1);
+
     return (
         <ImageBackground source={require('../../../public/images/background-login.jpg')} style={styles.image}>
             <View style={styles.card}>
-                <Picker selectedValue={selectedAge} onValueChange={(itemValue, itemIndex) => setSelectedAge(itemValue)}>
+                <Picker selectedValue={selectedAge} onValueChange={(itemValue, index) => setSelectedAge(itemValue)}>
                     {numbers.map(i => (
                         <Picker.Item label={String(i)} value={String(i)} key={i} />
                     ))}
                 </Picker>
-                <Pressable style={styles.button} onPress={() => navigation.navigate('ChoiceRole')}>
+                <Pressable style={styles.button} onPress={() => navigation.navigate('ChoiceRole', { selectedAge })}>
                     <Text style={styles.buttonText}>Done</Text>
                 </Pressable>
             </View>

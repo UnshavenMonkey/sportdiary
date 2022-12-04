@@ -1,24 +1,35 @@
 import React, { useState } from 'react';
 import { ImageBackground, View, Text, StyleSheet, TextInput, Platform, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const API_URL = Platform.OS === 'ios' ? 'http://localhost:5001' : 'http://10.0.2.2:5000';
+export default function SignUpScreen({ route }) {
+    const navigation = useNavigation();
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+    const role = Object.keys(route.params.role).filter(key => route.params.role[key] === true);
 
-export default function SignUpScreen(props) {
-    const { navigation } = props;
     return (
         <ImageBackground source={require('../../../public/images/background-login.jpg')} style={styles.image}>
             <View style={styles.card}>
                 <Text style={styles.heading}>Signup</Text>
                 <View style={styles.form}>
                     <View style={styles.inputs}>
-                        <TextInput style={styles.input} placeholder="Email" autoCapitalize="none" />
-                        <TextInput style={styles.input} placeholder="Name" />
-                        <TextInput secureTextEntry={true} style={styles.input} placeholder="Password" />
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Email"
+                            autoCapitalize="none"
+                            onChangeText={setEmail}
+                        />
+                        <TextInput style={styles.input} placeholder="Name" onChangeText={setName} />
+                        <TextInput
+                            secureTextEntry={true}
+                            style={styles.input}
+                            placeholder="Password"
+                            onChangeText={setPassword}
+                        />
                         <Pressable style={styles.button}>
                             <Text style={styles.buttonText}>Done</Text>
-                        </Pressable>
-                        <Pressable style={styles.buttonAlt} onPress={() => navigation.navigate('InputAge')}>
-                            <Text style={styles.buttonAltText}>Sign Up</Text>
                         </Pressable>
                     </View>
                 </View>

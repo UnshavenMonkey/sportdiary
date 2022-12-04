@@ -1,22 +1,25 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useState } from 'react';
 import { ImageBackground, View, Text, StyleSheet, Pressable } from 'react-native';
 
-export default function ChoiceRoleScreen() {
+export default function ChoiceRoleScreen({ route }) {
     const navigation = useNavigation();
+    const age = route.params.selectedAge;
+    const [role, setRole] = useState({ coach: false, sportsman: false, parrent: false });
+    console.log(role);
     return (
         <ImageBackground source={require('../../../public/images/background-login.jpg')} style={styles.image}>
             <View style={styles.card}>
-                <Pressable style={styles.button}>
+                <Pressable style={styles.button} onPress={() => setRole({ ...role, coach: !role.coach })}>
                     <Text style={styles.buttonText}>Тренер</Text>
                 </Pressable>
-                <Pressable style={styles.button}>
+                <Pressable style={styles.button} onPress={() => setRole({ ...role, sportsman: !role.sportsman })}>
                     <Text style={styles.buttonText}>Спортсмен</Text>
                 </Pressable>
-                <Pressable style={styles.button}>
+                <Pressable style={styles.button} onPress={() => setRole({ ...role, parrent: !role.parrent })}>
                     <Text style={styles.buttonText}>Родитель</Text>
                 </Pressable>
-                <Pressable style={styles.buttonAlt} onPress={() => navigation.navigate('Home')}>
+                <Pressable style={styles.buttonAlt} onPress={() => navigation.navigate('SignUp', { role, age })}>
                     <Text style={styles.buttonAltText}>Done</Text>
                 </Pressable>
             </View>
