@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
 import { ImageBackground, View, Text, StyleSheet, TextInput, Platform, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectEmail, selectName, selectPassword, setEmail, setName, setPassword, signUp } from './SignUpScreenSlice';
 
 export default function SignUpScreen({ route }) {
     const navigation = useNavigation();
-    const [email, setEmail] = useState('');
-    const [name, setName] = useState('');
-    const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
+    const email = useSelector(selectEmail);
+    const name = useSelector(selectName);
+    const password = useSelector(selectPassword);
     const role = Object.keys(route.params.role).filter(key => route.params.role[key] === true);
+
+    console.log(email, password, name);
+
+    const handleSignUp = async () => {
+        console.log('handle');
+        dispatch(signUp({email, name, password}))
+    };
 
     return (
         <ImageBackground source={require('../../../public/images/background-login.jpg')} style={styles.image}>
@@ -19,16 +29,16 @@ export default function SignUpScreen({ route }) {
                             style={styles.input}
                             placeholder="Email"
                             autoCapitalize="none"
-                            onChangeText={setEmail}
+                            onChangeText={(value) => dispatch(setEmail(value))}
                         />
-                        <TextInput style={styles.input} placeholder="Name" onChangeText={setName} />
+                        <TextInput style={styles.input} placeholder="Name" onChangeText={(value) => dispatch(setName(value))} />
                         <TextInput
                             secureTextEntry={true}
                             style={styles.input}
                             placeholder="Password"
-                            onChangeText={setPassword}
+                            onChangeText={(value) => dispatch(setPassword(value))}
                         />
-                        <Pressable style={styles.button}>
+                        <Pressable style={styles.button} onPress={handleSignUp}>
                             <Text style={styles.buttonText}>Done</Text>
                         </Pressable>
                     </View>
