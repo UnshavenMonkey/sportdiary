@@ -19,6 +19,9 @@ const User = sequelize.define('users', {
         type: Sequelize.STRING,
         allowNull: false,
     },
+    age: {
+        type: Sequelize.STRING,
+    },
 
 });
 
