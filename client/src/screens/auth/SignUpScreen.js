@@ -16,11 +16,11 @@ export default function SignUpScreen({ route }) {
 
     const handleSignUp = async () => {
         console.log('handle');
-        dispatch(signUp({email, name, password}))
+        dispatch(signUp({ email, name, password }));
     };
 
     return (
-        <ImageBackground source={require('../../../public/images/background-login.jpg')} style={styles.image}>
+        <View style={styles.container}>
             <View style={styles.card}>
                 <Text style={styles.heading}>Signup</Text>
                 <View style={styles.form}>
@@ -29,14 +29,18 @@ export default function SignUpScreen({ route }) {
                             style={styles.input}
                             placeholder="Email"
                             autoCapitalize="none"
-                            onChangeText={(value) => dispatch(setEmail(value))}
+                            onChangeText={value => dispatch(setEmail(value))}
                         />
-                        <TextInput style={styles.input} placeholder="Name" onChangeText={(value) => dispatch(setName(value))} />
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Name"
+                            onChangeText={value => dispatch(setName(value))}
+                        />
                         <TextInput
                             secureTextEntry={true}
                             style={styles.input}
                             placeholder="Password"
-                            onChangeText={(value) => dispatch(setPassword(value))}
+                            onChangeText={value => dispatch(setPassword(value))}
                         />
                         <Pressable style={styles.button} onPress={handleSignUp}>
                             <Text style={styles.buttonText}>Done</Text>
@@ -44,15 +48,14 @@ export default function SignUpScreen({ route }) {
                     </View>
                 </View>
             </View>
-        </ImageBackground>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
-    image: {
+    container: {
         flex: 1,
-        width: '100%',
-        alignItems: 'center'
+        backgroundColor: 'rgba(212, 108, 94, 1)'
     },
     card: {
         flex: 1,

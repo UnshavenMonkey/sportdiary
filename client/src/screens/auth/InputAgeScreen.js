@@ -10,7 +10,7 @@ export default function InputAgeScreen({ route }) {
     const numbers = Array(100).fill(1).map((v, i) => i + 1);
 
     return (
-        <ImageBackground source={require('../../../public/images/background-login.jpg')} style={styles.image}>
+        <View style={styles.container}>
             <View style={styles.card}>
                 <Picker selectedValue={selectedAge} onValueChange={(itemValue, index) => setSelectedAge(itemValue)}>
                     {numbers.map(i => (
@@ -21,15 +21,15 @@ export default function InputAgeScreen({ route }) {
                     <Text style={styles.buttonText}>Done</Text>
                 </Pressable>
             </View>
-        </ImageBackground>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
-    image: {
+    container: {
         flex: 1,
-        width: '100%',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'rgba(210, 48, 48, 0.7)'
     },
     card: {
         flex: 1,

@@ -4,8 +4,8 @@ import axios from 'axios';
 const initialState = {
     email: null,
     name: null,
-    password: null,
-}
+    password: null
+};
 
 export const signUp = createAsyncThunk('signUpScreen/signUp', async (data, { rejectWithValue }) => {
     // https://redux-toolkit.js.org/api/createAsyncThunk#examples
@@ -24,33 +24,29 @@ export const signUp = createAsyncThunk('signUpScreen/signUp', async (data, { rej
 });
 
 export const SignUpScreenSlice = createSlice({
-  name: 'signUpScreen',
-  initialState,
-  reducers: {
-    setEmail: (state, action) => {
-        state.email = action.payload;
+    name: 'signUpScreen',
+    initialState,
+    reducers: {
+        setEmail: (state, action) => {
+            state.email = action.payload;
+        },
+        setName: (state, action) => {
+            state.name = action.payload;
+        },
+        setPassword: (state, action) => {
+            state.password = action.payload;
+        },
+        cleanupSignUpScreen: state => initialState
     },
-    setName: (state, action) => {
-        state.name = action.payload;
-    },
-    setPassword: (state, action) => {
-        state.password = action.payload;
-    },
-    cleanupSignUpScreen: (state) => initialState,
-  },
-  extraReducers: {
-    [signUp.fulfilled]: (state, action) => {
-
+    extraReducers: builder => {
+        builder.addCase([signUp.fulfilled], (state, action) => {});
     }
-  }
 });
 
 export const signUpScreenReducer = SignUpScreenSlice.reducer;
 
 export const { setEmail, setName, setPassword, cleanupSignUpScreen } = SignUpScreenSlice.actions;
 
-export const selectName = (state) => state.signUpScreen.name;
-export const selectEmail = (state) => state.signUpScreen.email;
-export const selectPassword = (state) => state.signUpScreen.password;
-
-
+export const selectName = state => state.signUpScreen.name;
+export const selectEmail = state => state.signUpScreen.email;
+export const selectPassword = state => state.signUpScreen.password;
