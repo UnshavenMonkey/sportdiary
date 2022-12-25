@@ -18,7 +18,9 @@ export default function InputAgeScreen({ route }) {
             </View>
             <ImageBackground source={require('../../public/images/firstscreenmidle.jpg')} style={styles.image} />
             <View style={styles.novaView}>
-                <Text style={styles.ossText}>NOVA</Text>
+                <Pressable onPress={() => navigation.navigate('LoginScreen')}>
+                    <Text style={styles.ossText}>NOVA</Text>
+                </Pressable>
             </View>
             <ImageBackground source={require('../../public/images/firstscreendown.jpg')} style={styles.image} />
         </View>

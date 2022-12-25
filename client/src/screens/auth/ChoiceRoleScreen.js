@@ -8,30 +8,36 @@ export default function ChoiceRoleScreen({ route }) {
     const [role, setRole] = useState({ coach: false, sportsman: false, parrent: false });
     console.log(role);
     return (
-        <ImageBackground source={require('../../../public/images/background-login.jpg')} style={styles.image}>
+        <View style={styles.container}>
             <View style={styles.card}>
-                <Pressable style={styles.button} onPress={() => setRole({ ...role, coach: !role.coach })}>
+                <Pressable
+                    style={[styles.button, role.coach ? styles.buttoncheck : null]}
+                    onPress={() => setRole({ ...role, coach: !role.coach })}>
                     <Text style={styles.buttonText}>Тренер</Text>
                 </Pressable>
-                <Pressable style={styles.button} onPress={() => setRole({ ...role, sportsman: !role.sportsman })}>
+                <Pressable
+                    style={[styles.button, role.sportsman ? styles.buttoncheck : null]}
+                    onPress={() => setRole({ ...role, sportsman: !role.sportsman })}>
                     <Text style={styles.buttonText}>Спортсмен</Text>
                 </Pressable>
-                <Pressable style={styles.button} onPress={() => setRole({ ...role, parrent: !role.parrent })}>
+                <Pressable
+                    style={[styles.button, role.parrent ? styles.buttoncheck : null]}
+                    onPress={() => setRole({ ...role, parrent: !role.parrent })}>
                     <Text style={styles.buttonText}>Родитель</Text>
                 </Pressable>
                 <Pressable style={styles.buttonAlt} onPress={() => navigation.navigate('SignUp', { role, age })}>
                     <Text style={styles.buttonAltText}>Done</Text>
                 </Pressable>
             </View>
-        </ImageBackground>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
-    image: {
+    container: {
         flex: 1,
-        width: '100%',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'rgba(210, 48, 48, 0.7)'
     },
     card: {
         flex: 1,
@@ -45,12 +51,15 @@ const styles = StyleSheet.create({
     },
     button: {
         width: '80%',
-        backgroundColor: 'gray',
+        backgroundColor: '#7D3AA7',
         height: 40,
         borderRadius: 50,
         justifyContent: 'center',
         alignItems: 'center',
         marginVertical: 5
+    },
+    buttoncheck: {
+        backgroundColor: 'rgba(210, 85, 85, 1)'
     },
     buttonText: {
         color: 'white',

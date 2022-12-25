@@ -4,26 +4,22 @@ import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectEmail, selectName, selectPassword, setEmail, setName, setPassword, signUp } from './SignUpScreenSlice';
 
-export default function SignUpScreen({ route }) {
+export default function LoginScreen({ route }) {
     const navigation = useNavigation();
     const dispatch = useDispatch();
     const email = useSelector(selectEmail);
-    const name = useSelector(selectName);
     const password = useSelector(selectPassword);
-    const role = Object.keys(route.params.role).filter(key => route.params.role[key] === true);
 
-    console.log(email, password, name);
-
-    const handleSignUp = async () => {
-        console.log('handle');
-        dispatch(signUp({ email, name, password }));
-        navigation.navigate('LoginScreen');
+    const handleLogin = async () => {
+        console.log('login');
+        navigation.navigate('Home');
+        // dispatch(signUp({ email, name, password }));
     };
 
     return (
         <View style={styles.container}>
             <View style={styles.card}>
-                <Text style={styles.heading}>Signup</Text>
+                <Text style={styles.heading}>Login</Text>
                 <View style={styles.form}>
                     <View style={styles.inputs}>
                         <TextInput
@@ -33,18 +29,16 @@ export default function SignUpScreen({ route }) {
                             onChangeText={value => dispatch(setEmail(value))}
                         />
                         <TextInput
-                            style={styles.input}
-                            placeholder="Name"
-                            onChangeText={value => dispatch(setName(value))}
-                        />
-                        <TextInput
                             secureTextEntry={true}
                             style={styles.input}
                             placeholder="Password"
                             onChangeText={value => dispatch(setPassword(value))}
                         />
-                        <Pressable style={styles.button} onPress={handleSignUp}>
+                        <Pressable style={styles.button} onPress={handleLogin}>
                             <Text style={styles.buttonText}>Done</Text>
+                        </Pressable>
+                        <Pressable style={styles.button} onPress={() => navigation.navigate('StartScreen')}>
+                            <Text style={styles.buttonText}>SignUp</Text>
                         </Pressable>
                     </View>
                 </View>

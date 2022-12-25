@@ -1,21 +1,26 @@
-import React from 'react';
-import { ImageBackground, View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { ImageBackground, View, Text, StyleSheet, Pressable } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
+import { useNavigation } from '@react-navigation/native';
 
-export default function HomeScreen() {
+export default function HomeScreen({ route }) {
+    const navigation = useNavigation();
+    // eslint-disable-next-line prettier/prettier
+
     return (
-        <ImageBackground source={require('../../../public/images/background-login.jpg')} style={styles.image}>
+        <View style={styles.container}>
             <View style={styles.card}>
                 <Text style={styles.heading}>Home</Text>
             </View>
-        </ImageBackground>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
-    image: {
+    container: {
         flex: 1,
-        width: '100%',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'rgba(210, 48, 48, 0.7)'
     },
     card: {
         flex: 1,
@@ -25,6 +30,21 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         maxHeight: 380,
         paddingBottom: '30%'
+    },
+    button: {
+        width: '80%',
+        backgroundColor: 'black',
+        height: 40,
+        borderRadius: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        marginVertical: 5
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: '400'
     },
     heading: {
         fontSize: 30,
